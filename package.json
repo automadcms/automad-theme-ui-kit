@@ -1,0 +1,34 @@
+{
+  "name": "automad-theme-ui-kit",
+  "version": "0.1.0",
+  "description": "A collection of headless UI web components that can be used in Automad themes",
+  "keywords": [
+    "ui",
+    "automad"
+  ],
+  "homepage": "https://github.com/automadcms/automad-theme-ui-kit#readme",
+  "bugs": {
+    "url": "https://github.com/automadcms/automad-theme-ui-kit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/automadcms/automad-theme-ui-kit.git"
+  },
+  "license": "MIT",
+  "author": "Marc Anton Dahmen",
+  "type": "module",
+  "exports": {
+    "./*": "./dist/*/index.js"
+  },
+  "prettier": {
+    "trailingComma": "es5"
+  },
+  "scripts": {
+    "build": "node esbuild.js",
+    "dev": "node esbuild.js --dev"
+  },
+  "devDependencies": {
+    "esbuild": "^0.27.3",
+    "typescript": "^5.9.3"
+  }
+}
