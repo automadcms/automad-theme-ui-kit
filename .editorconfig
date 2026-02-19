@@ -5,6 +5,6 @@ indent_style = tab
 indent_size = 4
 quote_type = single
 
-[*.{md,json}]
+[*.{md,json,yml}]
 indent_style = space
 indent_size = 2
