@@ -29,7 +29,8 @@
   },
   "scripts": {
     "build": "node esbuild.js",
-    "dev": "node esbuild.js --dev"
+    "dev": "node esbuild.js --dev",
+    "release": "bash bin/release.sh"
   },
   "devDependencies": {
     "esbuild": "^0.27.3",
