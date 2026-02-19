@@ -39,7 +39,7 @@ import 'automad-theme-ui-kit/Search';
 
 Now you can use the component in your _Automad_ template like this:
 
-```php
+```html
 <ui-search
   src="/_api/public/pagelist"
   context="@{ origUrl }"
@@ -96,14 +96,10 @@ import 'automad-theme-ui-kit/ThemeSwitcher';
 
 Then add it to your _Automad_ template like this:
 
-```php
+```html
 <ui-theme-switcher>
-  <ui-theme-switcher-label-dark>
-    Dark
-  </ui-theme-switcher-label-dark>
-  <ui-theme-switcher-label-light>
-    Light
-  </ui-theme-switcher-label-light>
+  <ui-theme-switcher-label-dark>Dark</ui-theme-switcher-label-dark>
+  <ui-theme-switcher-label-light>Light</ui-theme-switcher-label-light>
 </ui-theme-switcher>
 ```
 
