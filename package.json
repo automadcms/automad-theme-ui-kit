@@ -22,6 +22,7 @@
     "dist"
   ],
   "exports": {
+    ".": "./dist/index.js",
     "./*": "./dist/components/*/index.js"
   },
   "prettier": {
