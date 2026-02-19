@@ -8,7 +8,10 @@ const isDev = process.argv.includes('--dev');
 const outdir = path.join(__dirname, 'dist');
 const src = path.join(__dirname, 'src');
 
-const entryPoints = fs.globSync(`${src}/components/*/index.ts`);
+const entryPoints = [
+	path.join(src, 'index.ts'),
+	...fs.globSync(`${src}/components/*/index.ts`),
+];
 
 const commonConfig = {
 	entryPoints,

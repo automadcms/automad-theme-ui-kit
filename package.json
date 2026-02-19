@@ -17,8 +17,12 @@
   "license": "MIT",
   "author": "Marc Anton Dahmen",
   "type": "module",
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
   "exports": {
-    "./*": "./dist/*/index.js"
+    "./*": "./dist/components/*/index.js"
   },
   "prettier": {
     "trailingComma": "es5"
