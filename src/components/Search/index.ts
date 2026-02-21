@@ -43,7 +43,7 @@ const renderTemplate = (
 };
 
 class SearchComponent extends BaseComponent {
-	static TAG_NAME = 'ui-search';
+	static TAG_NAME = 'au-search';
 
 	private toggle: HTMLElement = null;
 
@@ -114,13 +114,7 @@ class SearchComponent extends BaseComponent {
 	private initElements(): void {
 		this.toggle =
 			this.querySelector<HTMLElement>(SearchToggleComponent.TAG_NAME) ||
-			create(
-				'span',
-				['search-toggle'],
-				{ title: `Ctrl + ${this.key}` },
-				this,
-				iconSearch
-			);
+			create('span', ['search-toggle'], {}, this, iconSearch);
 
 		const dialogComponent = this.querySelector<HTMLElement>(
 			SearchDialogComponent.TAG_NAME
@@ -129,14 +123,14 @@ class SearchComponent extends BaseComponent {
 		this.classLoading = dialogComponent?.getAttribute('class:loading');
 		this.dialog = create(
 			'dialog',
-			[dialogComponent?.className || 'ui-search__dialog'],
+			[dialogComponent?.className || 'au-search__dialog'],
 			{ closedby: 'any' },
 			this
 		);
 
 		this.form =
 			this.querySelector<HTMLElement>(SearchFormComponent.TAG_NAME) ??
-			create('div', ['ui-search__form'], {});
+			create('div', ['au-search__form'], {});
 
 		this.dialog.appendChild(this.form);
 
@@ -146,37 +140,35 @@ class SearchComponent extends BaseComponent {
 
 		this.results =
 			this.querySelector<HTMLElement>(SearchResultsComponent.TAG_NAME) ||
-			create('div', ['ui-search__results'], {});
-
-		this.dialog.appendChild(this.results);
-
-		const resultTemplate = this.results.querySelector(
-			SearchResultsEachComponent.TAG_NAME
-		);
+			create('div', ['au-search__results'], {});
 
 		this.resultTemplate =
-			resultTemplate?.innerHTML ||
+			this.results.innerHTML ||
 			`
-				<a href="{{ url }}" class="ui-search__results-item">
-					<div class="ui-search__results-title">{{ title }}</div>
-					<small class="ui-search__results-description">{{ :searchResultsContext | +hero | +main }}</small>
+				<a href="{{ url }}" class="au-search__results-item">
+					<div class="au-search__results-title">{{ title }}</div>
+					<small class="au-search__results-description">{{ :searchResultsContext | +hero | +main }}</small>
 				</a>
 			`;
 
+		this.results.innerHTML = '';
+
+		this.dialog.appendChild(this.results);
+
 		this.classSelected =
-			resultTemplate?.getAttribute('class:selected') ||
-			'ui-search__results-item--selected';
+			this.results?.getAttribute('class:selected') ||
+			'au-search__results-item--selected';
 
-		resultTemplate?.remove();
+		this.results.removeAttribute('class:selected');
+		this.results.style.removeProperty('display');
 
-		const noResultsWrapper = this.results.querySelector<HTMLElement>(
+		const noResultsWrapper = this.querySelector<HTMLElement>(
 			SearchNoResultsComponent.TAG_NAME
 		);
 
 		this.noResultsHtml = noResultsWrapper?.innerHTML || 'Nothing found.';
 
 		noResultsWrapper?.remove();
-
 		dialogComponent?.remove();
 	}
 
@@ -287,23 +279,19 @@ class SearchComponent extends BaseComponent {
 }
 
 class SearchToggleComponent extends BaseComponent {
-	static TAG_NAME = 'ui-search-toggle';
+	static TAG_NAME = 'au-search-toggle';
 }
 
 class SearchDialogComponent extends BaseComponent {
-	static TAG_NAME = 'ui-search-dialog';
-}
-
-class SearchResultsComponent extends BaseComponent {
-	static TAG_NAME = 'ui-search-results';
+	static TAG_NAME = 'au-search-dialog';
 }
 
 class SearchFormComponent extends BaseComponent {
-	static TAG_NAME = 'ui-search-form';
+	static TAG_NAME = 'au-search-form';
 }
 
-class SearchResultsEachComponent extends BaseComponent {
-	static TAG_NAME = 'ui-search-results-each';
+class SearchResultsComponent extends BaseComponent {
+	static TAG_NAME = 'au-search-results';
 
 	connectedCallback(): void {
 		this.style.display = 'none';
@@ -311,7 +299,7 @@ class SearchResultsEachComponent extends BaseComponent {
 }
 
 class SearchNoResultsComponent extends BaseComponent {
-	static TAG_NAME = 'ui-search-no-results';
+	static TAG_NAME = 'au-search-no-results';
 
 	connectedCallback(): void {
 		this.style.display = 'none';
@@ -323,10 +311,6 @@ customElements.define(SearchToggleComponent.TAG_NAME, SearchToggleComponent);
 customElements.define(SearchDialogComponent.TAG_NAME, SearchDialogComponent);
 customElements.define(SearchFormComponent.TAG_NAME, SearchFormComponent);
 customElements.define(SearchResultsComponent.TAG_NAME, SearchResultsComponent);
-customElements.define(
-	SearchResultsEachComponent.TAG_NAME,
-	SearchResultsEachComponent
-);
 customElements.define(
 	SearchNoResultsComponent.TAG_NAME,
 	SearchNoResultsComponent
