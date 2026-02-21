@@ -40,39 +40,37 @@ import 'automad-theme-ui-kit/Search';
 Now you can use the component in your _Automad_ template like this:
 
 ```html
-<ui-search
+<au-search
   src="/_api/public/pagelist"
   context="@{ origUrl }"
   class="kit-search"
   key="k"
 >
-  <ui-search-toggle class="kit-search__toggle" title="Ctrl + k">
+  <au-search-toggle class="kit-search__toggle" title="Ctrl + k">
     Search
-  </ui-search-toggle>
-  <ui-search-dialog class="kit-search__dialog" class:loading="loading">
-    <ui-search-form class="kit-search__form">
+  </au-search-toggle>
+  <au-search-dialog class="kit-search__dialog" class:loading="loading">
+    <au-search-form class="kit-search__form">
       <input class="kit-search__input" type="search" placeholder="Search ..." />
-    </ui-search-form>
-    <ui-search-results class="kit-search__results">
-      <ui-search-results-each class:selected="selected">
-        <a href="{{ url }}" class="kit-search__results-item">
-          <div class="kit-search__results-title">{{ title }}</div>
-          <small class="kit-search__results-description">
-            {{ :searchResultsContext | +hero | +main }}
-          </small>
-        </a>
-      </ui-search-results-each>
-      <ui-search-no-results>Nothing found.</ui-search-no-results>
-    </ui-search-results>
-  </ui-search-dialog>
-</ui-search>
+    </au-search-form>
+    <au-search-results class="kit-search__results" class:selected="selected">
+      <a href="{{ url }}" class="kit-search__results-item">
+        <div class="kit-search__results-title">{{ title }}</div>
+        <small class="kit-search__results-description">
+          {{ :searchResultsContext | +hero | +main }}
+        </small>
+      </a>
+    </au-search-results>
+    <au-search-no-results>Nothing found.</au-search-no-results>
+  </au-search-dialog>
+</au-search>
 ```
 
 The example above shows the structure of components that can be freely style in order to fit the design of your page.
 
 ### Results Template
 
-You can use the `{{ variable }}` syntax inside the `<ui-search-results-each>` component in order to access page data for search results. A `|` character can be used to define fallback fields in case a field has no value.
+You can use the `{{ variable }}` syntax inside the `<au-search-results-each>` component in order to access page data for search results. A `|` character can be used to define fallback fields in case a field has no value.
 
 ```html
 <small class="kit-search__results-description">
@@ -97,15 +95,15 @@ import 'automad-theme-ui-kit/ThemeSwitcher';
 Then add it to your _Automad_ template like this:
 
 ```html
-<ui-theme-switcher>
-  <ui-theme-switcher-label-dark>Dark</ui-theme-switcher-label-dark>
-  <ui-theme-switcher-label-light>Light</ui-theme-switcher-label-light>
-</ui-theme-switcher>
+<au-theme-switcher>
+  <au-theme-switcher-dark>Dark</au-theme-switcher-dark>
+  <au-theme-switcher-light>Light</au-theme-switcher-light>
+</au-theme-switcher>
 ```
 
 The switcher will add either the `light` or the `dark` class to the main `html` element according to the user's selection or browser settings.
 
-Labels that indicate the active mode can be defined using the `<ui-theme-switcher-label-light>` and `<ui-theme-switcher-label-dark>` components as shown in the above example.
+Labels that indicate the active mode can be defined using the `<au-theme-switcher-light>` and `<au-theme-switcher-dark>` components as shown in the above example.
 
 ---
 
