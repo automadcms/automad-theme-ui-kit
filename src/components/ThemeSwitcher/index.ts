@@ -11,7 +11,7 @@ import { BaseComponent } from '@/BaseComponent';
 
 type Theme = 'light' | 'dark';
 
-const localStorageKey = 'ui-theme';
+const localStorageKey = 'au-theme';
 
 const getTheme = (): Theme => {
 	const localScheme = localStorage.getItem(localStorageKey);
@@ -31,7 +31,7 @@ const getTheme = (): Theme => {
 };
 
 class ThemeSwitcherComponent extends BaseComponent {
-	static TAG_NAME = 'ui-theme-switcher';
+	static TAG_NAME = 'au-theme-switcher';
 
 	private labelLight = iconLight;
 
@@ -77,7 +77,7 @@ class ThemeSwitcherComponent extends BaseComponent {
 }
 
 class ThemeSwitcherLabelLightComponent extends BaseComponent {
-	static TAG_NAME = 'ui-theme-switcher-label-light';
+	static TAG_NAME = 'au-theme-switcher-light';
 
 	connectedCallback(): void {
 		this.style.display = 'none';
@@ -85,7 +85,7 @@ class ThemeSwitcherLabelLightComponent extends BaseComponent {
 }
 
 class ThemeSwitcherLabelDarkComponent extends BaseComponent {
-	static TAG_NAME = 'ui-theme-switcher-label-dark';
+	static TAG_NAME = 'au-theme-switcher-dark';
 
 	connectedCallback(): void {
 		this.style.display = 'none';
